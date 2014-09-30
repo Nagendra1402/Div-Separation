@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="resources/css/static.css"/>
+
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.showSingle').on('click', function () {
+    $(this).addClass('selected').siblings().removeClass('selected');
+    $('.targetDiv').hide();
+    $('#subcontainer' +$(this).data('target')).show();
+});
+$('.showSingle').first().click();
+});
+
+</script>
+</head>
+
+<body>
+<div id="container">
+ <div id="main">
+  <ul id="horizontalmenu">
+   <li class="showSingle" data-target="1" id="one">ONE</li>
+   <li class="showSingle" data-target="2" id="two">TWO</li>
+   <li class="showSingle" data-target="3" id="three">THREE</li>
+  </ul>
+ </div>
+ <div id="subcontainer1" class="targetDiv">
+  <div id="div1">
+   <p>Grow sales faster with the world's #1 sales app.
+   Welcome to Sales Cloud, built on the Salesforce1 Platform. A new world, and a better way to sell. Where field sales sells only on mobile devices. And inside sales is fed nothing less than the best leads. It’s sales managers knowing which deals will close. And when. A world where lead and contact information is always fresh and complete. And everyone performs like an “A” player.</p>
+  </div>
+  <div id="div2">
+   <img src="resources/images/Penguins.jpg"></<img>
+  </div>
+ </div>
+ <div id="subcontainer2"  class="targetDiv"> 
+  <div id="div1">Nagendra1</div>
+ <div id="div2">Nagendra1</div>
+ </div>
+  <div id="subcontainer3"  class="targetDiv">
+<div id="div1">Nagendra2</div>
+ <div id="div2">Nagendra2</div>
+ </div>
+</div>   
+</body>
+
+</html>
