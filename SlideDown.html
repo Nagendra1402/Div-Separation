@@ -1,0 +1,37 @@
+$( document ).ready(function() {
+
+$('.pnl2 > ul > li > a').hover(function() {
+
+//alert("hello")
+  $('.pnl2 li').removeClass('active');
+  $(this).closest('li').addClass('active');     
+  var checkElement = $(this).next();
+  
+  if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+  //alert("hello");
+    $(this).closest('li').removeClass('active');
+   $(checkElement, this).stop().slideDown(200);
+   
+   /*$(checkElement).mouseleave(function(){
+                     $(this).slideUp('normal');
+					 alert("1");
+					
+                }); */
+  }
+  if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+  //alert("hello");
+    $('.pnl2 ul ul:visible').slideUp('normal');
+    $(checkElement, this).stop().slideDown(200);
+    $(checkElement).on('mouseleave',function(){
+	    $(this).slideUp('normal');
+     });
+  }
+  
+  
+  if($(this).closest('li').find('ul').children().length == 0) {
+    return true;
+  } else {
+    return false;   
+  }                            
+});
+});
