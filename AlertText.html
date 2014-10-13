@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Alert</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
+
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/knockout-3.2.0.js"></script>
+<script type="text/javascript">
+ $(function(){
+
+ });
+ 
+ function triggerError(){
+	 
+	 if($('#digit').val()>100){
+		 $('#alerttext').text("Enter number less than 100");
+ }
+	 else if($('#digit').val().match(/[a-zA-Z$.@$%*=]/)){
+		 $('#alerttext').text("Enter Valid number");
+	 }
+	 else{
+		 $('#alerttext').text("");
+	 }
+ }
+</script>
+</head>
+<body>
+ <form>
+  <table>
+   <tr><td><input type="text" id="digit" onkeyup="triggerError();"></td><td><span id="alerttext"></span></td></tr>
+  </table>
+ </form>
+</body>
+</html>
