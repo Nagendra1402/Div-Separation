@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project</title>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="resources/css/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="resources/css/style.css"/>
+<link rel="stylesheet" href="resources/css/datepicker.css"/>
+
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="resources/js/knockout-3.2.0.js"></script>
+<script type="text/javascript" src="resources/js/knockout.validation.min.js"></script>
+<script type="text/javascript" src="resources/js/respond.js"></script>
+ 
+ <script type="text/javascript">
+ $(function(){
+     function viewModel(){
+    	 var self=this;
+         self.hasCellphone = ko.observable(false),
+         self.wantsSpam = ko.observable(true),
+         self.spamFlavors = ko.observableArray([]),
+         self.cellphoneNumber= "",
+         
+         self.alertChecks=function(){
+        	 alert(self.spamFlavors());
+         }
+         
+     };
+    ko.applyBindings(new viewModel()); 
+    
+    $("#merge_button").click(function(event){
+        event.preventDefault();
+        var searchIDs = $("input[type='checkbox']#test:checked").map(function(){
+          return $(this).val();
+        }).get(); // <----
+        console.log(searchIDs);
+        alert(searchIDs);
+    }); 
+    $("#cellid").click(function(){
+     if($("#cphone").is(":disabled")){
+    	 $("#cphone").prop("disabled",false);
+     }	
+     else
+    	 {
+    	 $("#cphone").prop("disabled",true);
+    	 }
+    	
+    });
+    
+    $('#mutliselect').click(function(){
+    	
+    var selectedIds= $("#multi-selectbox").find("#multi:selected").map(function() {
+            return $(this).val();
+        }).get();
+    alert(selectedIds);
+    });
+    
+ })   
+ </script>
+ 
+ <style type="text/css">
+  h2 {
+    float: left;
+    width: 170px;
+}
+.popup {
+    float: left;
+    width: 340px;
+    background: #727272;
+    padding: 10px;
+    border-radius: 6px;
+    color: #FFF;
+    position: relative;
+    font-size: 12px;
+    line-height: 20px;
+}
+.popup:before {
+    content: "";
+    display: block;
+    width: 0; 
+    height: 0; 
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid #727272; 
+    position: absolute;
+    top: 16px;
+    left: -12px;
+}
+#check:before{
+clear:both;
+display:block;
+content:"";
+}
+ </style>
+</head>
+<body>
+ <p>
+    <input type='checkbox' data-bind="checked: hasCellphone" />
+    I have a cellphone
+</p>
+<p>
+    Your cellphone number:
+    <input type='text' data-bind="value: cellphoneNumber, enable: hasCellphone" />
+</p>
+<p>Send me spam: <input type="checkbox" data-bind="checked: wantsSpam" /></p>
+<div data-bind="visible: wantsSpam">
+    Preferred flavors of spam:
+    <div><input type="checkbox" value="cherry" data-bind="checked: spamFlavors" id="test" /> Cherry</div>
+    <div><input type="checkbox" value="almond" data-bind="checked: spamFlavors" /> Almond</div>
+    <div><input type="checkbox" value="msg" data-bind="checked: spamFlavors" /> Monosodium Glutamate</div>
+</div>
+<div>
+  <input type='checkbox' id="test" value='1' checked/>
+  <input type='checkbox' id="test" value='2' />
+  <button id="merge_button" >click</button>
+  <button data-bind="click: $root.alertChecks" >click!</button>
+ </div> 
+ <h2>What is CSS?</h2>
+<div class="popup">
+    Cascading Style Sheets is a style sheet language used for describing
+    the presentation semantics of a document written in a markup language.
+</div>
+<div id="check">
+  <p>
+    <input type='checkbox' id="cellid">
+    I have a cellphone
+</p>
+<p>
+    Your cellphone number:
+    <input type='text' id="cphone" disabled />
+</p>
+</div>
+<div>
+ <form>
+    <select name="select_list" multiple="multiple" id="multi-selectbox">
+      <option value="val1" id="multi">option 1</option>
+      <option value="val2" id="multi">option 2</option>
+      <option value="val3" id="multi">option 3</option>
+      <option value="val4" id="multi">option 4</option>
+    </select>
+    <input type="submit" value="Submit" id="mutliselect">
+</form>
+</div>
+</body>
+</html>
