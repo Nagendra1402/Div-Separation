@@ -1,0 +1,19 @@
+	// From and to date picker
+	$("#startdate").datepicker({
+		showButtonPanel : true,
+		defaultDate : "+1w",
+		changeMonth : true,
+		numberOfMonths : 1,
+		onClose : function(selectedDate) {
+			$("#enddate").datepicker("option", "minDate", selectedDate);
+		}
+	}).datepicker("setDate", new Date());
+	$("#enddate").datepicker({
+		defaultDate : "+1w",
+		changeMonth : true,
+		numberOfMonths : 1,
+		onClose : function(selectedDate) {
+			$("#startdate").datepicker("option", "maxDate", selectedDate);
+		}
+
+	});
